@@ -6,10 +6,9 @@
 # and you are in the correct project with sufficient permissions.
     
 # List of resource yamls
-items=("mariadb-pvc" 
-       "mariadb-secret"
+items=("mariadb-secret"
        "mariadb-cm"
-       "mariadb-deployment"
+       "mariadb-statefulset"
        "mariadb-svc"
        "wordpress-pvc" 
        "wordpress-secret"
