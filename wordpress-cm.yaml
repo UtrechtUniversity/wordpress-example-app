@@ -1,3 +1,4 @@
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -13,4 +14,3 @@ data:
   wordpress-enable-https: 'yes'
   wordpress-blog-name: value4
   wordpress-enable-reverse-proxy: 'yes'
-  
