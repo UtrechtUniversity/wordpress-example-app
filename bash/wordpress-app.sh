@@ -6,7 +6,8 @@
 # and you are in the correct project with sufficient permissions.
     
 # List of resource yamls
-items=("mariadb-secret"
+items=("mariadb-pvc"
+       "mariadb-secret"
        "mariadb-cm"
        "mariadb-statefulset"
        "mariadb-svc"
