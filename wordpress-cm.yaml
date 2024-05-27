@@ -7,10 +7,11 @@ data:
   wordpress-database-host: mariadb
   wordpress-database-port-number: '3306'
   wordpress-database-name: bitnami_wordpress
+  wordpress-enable-https: 'yes'
+  wordpress-enable-reverse-proxy: 'yes'
+  # Change the following to your blog name, email, first name and last name
+  wordpress-blog-name: <your-blog-name>
   wordpress-database-username: <your-mariadb-username>
   wordpress-email: <your-email>
-  wordpress-firstname: <your-first-name
+  wordpress-firstname: <your-first-name>
   wordpress-lastname: <your-last-name>
-  wordpress-enable-https: 'yes'
-  wordpress-blog-name: <your-blog-name>
-  wordpress-enable-reverse-proxy: 'yes'

@@ -3,6 +3,8 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: mariadb
+  labels:
+    app: uu-example
 spec:
   serviceName: mariadb
   replicas: 1
@@ -57,7 +59,7 @@ spec:
     - metadata:
         name: mariadb-persistent-storage
       spec:
-        accessModes: [ "ReadWriteOnce" ]
+        accessModes: ["ReadWriteOnce"]
         resources:
           requests:
             storage: 10Gi

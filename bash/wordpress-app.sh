@@ -3,11 +3,10 @@
 # This script is used to create or delete the wordpress app in the cluster
 # It uses the correct order of resource yamls to create or delete the app
 # Make sure you have logged in to the cluster before running this script,
-# and you are in the correct project with sufficient permissions.
+# and you are in the correct project with sufficient permissions. 
     
 # List of resource yamls
-items=("mariadb-pvc"
-       "mariadb-secret"
+items=("mariadb-secret"
        "mariadb-cm"
        "mariadb-statefulset"
        "mariadb-svc"
