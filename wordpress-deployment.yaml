@@ -1,0 +1,101 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress
+spec:
+  selector:
+    matchLabels:
+      app: wordpress
+  template:
+    metadata:
+      labels:
+        app: wordpress
+    spec:
+      containers:
+        - name: wordpress
+          image: bitnami/wordpress-nginx:latest
+          resources:
+            limits:
+              memory: 512Mi
+              cpu: "0.3"
+          ports:
+            - containerPort: 8080
+          env:
+            - name: WORDPRESS_DATABASE_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: wordpress-config
+                  key: wordpress-database-host
+            - name: WORDPRESS_DATABASE_PORT_NUMBER
+              valueFrom:
+                configMapKeyRef:
+                  name: wordpress-config
+                  key: wordpress-database-port-number
+            - name: WORDPRESS_DATABASE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: wordpress-config
+                  key: wordpress-database-name
+            - name: WORDPRESS_DATABASE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mariadb-secret
+                  key: mariadb-user
+            - name: WORDPRESS_DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mariadb-secret
+                  key: mariadb-password
+            - name: WORDPRESS_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: wordpress-secret
+                  key: wordpress-username
+            - name: WORDPRESS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: wordpress-secret
+                  key: wordpress-user-password
+            - name: WORDPRESS_EMAIL
+              valueFrom:
+                configMapKeyRef:
+                  name: wordpress-config
+                  key: wordpress-email
+            - name: WORDPRESS_FIRST_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: wordpress-config
+                  key: wordpress-firstname
+            - name: WORDPRESS_LAST_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: wordpress-config
+                  key: wordpress-lastname
+            - name: WORDPRESS_ENABLE_HTTPS
+              valueFrom:
+                configMapKeyRef:
+                  name: wordpress-config
+                  key: wordpress-enable-https
+            - name: WORDPRESS_BLOG_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: wordpress-config
+                  key: wordpress-blog-name
+            - name: WORDPRESS_ENABLE_REVERSE_PROXY
+              valueFrom:
+                configMapKeyRef:
+                  name: wordpress-config
+                  key: wordpress-enable-reverse-proxy
+          volumeMounts:
+            - name: wordpress-persistent-storage
+              mountPath: /bitnami/wordpress
+            - name: wordpress-volume
+              mountPath: /etc/config
+      volumes:
+        - name: wordpress-persistent-storage
+          persistentVolumeClaim:
+            claimName: wordpress-pvc
+        - name: wordpress-volume
+          configMap:
+            name: wordpress-config
