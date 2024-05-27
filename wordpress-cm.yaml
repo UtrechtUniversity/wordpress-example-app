@@ -12,5 +12,5 @@ data:
   wordpress-firstname: <your-first-name
   wordpress-lastname: <your-last-name>
   wordpress-enable-https: 'yes'
-  wordpress-blog-name: value4
+  wordpress-blog-name: <your-blog-name>
   wordpress-enable-reverse-proxy: 'yes'
