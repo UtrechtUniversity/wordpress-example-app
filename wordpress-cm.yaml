@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: wordpress-config
+data:
+  wordpress-database-host: mariadb
+  wordpress-database-port-number: '3306'
+  wordpress-database-name: bitnami_wordpress
+  wordpress-database-username: <your-mariadb-username>
+  wordpress-email: <your-email>
+  wordpress-firstname: <your-first-name
+  wordpress-lastname: <your-last-name>
+  wordpress-enable-https: 'yes'
+  wordpress-blog-name: value4
+  wordpress-enable-reverse-proxy: 'yes'
+  
