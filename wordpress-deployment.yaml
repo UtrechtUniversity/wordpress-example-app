@@ -41,8 +41,8 @@ spec:
                   key: wordpress-database-name
             - name: WORDPRESS_DATABASE_USER
               valueFrom:
-                secretKeyRef:
-                  name: mariadb-secret
+                configMapKeyRef:
+                  name: mariadb-config
                   key: mariadb-user
             - name: WORDPRESS_DATABASE_PASSWORD
               valueFrom:

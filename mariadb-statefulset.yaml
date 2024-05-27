@@ -36,8 +36,8 @@ spec:
                   key: mariadb-database
             - name: MARIADB_USER
               valueFrom:
-                secretKeyRef:
-                  name: mariadb-secret
+                configMapKeyRef:
+                  name: mariadb-config
                   key: mariadb-user
             - name: MARIADB_PASSWORD
               valueFrom:

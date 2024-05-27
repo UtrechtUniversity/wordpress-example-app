@@ -5,3 +5,4 @@ metadata:
   name: mariadb-config
 data:
   mariadb-database: bitnami_wordpress
+  mariadb-user: bn_wordpress
