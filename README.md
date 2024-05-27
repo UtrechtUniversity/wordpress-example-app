@@ -13,7 +13,7 @@ How to deploy an wordpress app on openshift running in unpriviliged containers
 2. **Replace the <your-....> with your own data in all the yaml files**\
    ```wordpress-email: <your-email>``` with ```wordpress-email: thisismyemail@email.com```
 3. **Run the script wordpress-app.sh**\
-   ```./wordpress-app.sh```
+   ```bash wordpress-app.sh```
 
 ### Why We Use Bitnami Unprivileged Containers?
 
