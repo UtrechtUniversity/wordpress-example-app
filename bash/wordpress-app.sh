@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # This script is used to create or delete the wordpress app in the cluster
 # It uses the correct order of resource yamls to create or delete the app
