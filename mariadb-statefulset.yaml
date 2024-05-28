@@ -1,9 +1,13 @@
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: mariadb
+  labels:
+    app: uu-example
 spec:
+  serviceName: mariadb
+  replicas: 1
   selector:
     matchLabels:
       app: mariadb
@@ -32,8 +36,8 @@ spec:
                   key: mariadb-database
             - name: MARIADB_USER
               valueFrom:
-                secretKeyRef:
-                  name: mariadb-secret
+                configMapKeyRef:
+                  name: mariadb-config
                   key: mariadb-user
             - name: MARIADB_PASSWORD
               valueFrom:
@@ -45,12 +49,11 @@ spec:
           volumeMounts:
             - name: mariadb-persistent-storage
               mountPath: /bitnami/mariadb
-            - name: mariadb-volume
-              mountPath: /etc/config
-      volumes:
-        - name: mariadb-persistent-storage
-          persistentVolumeClaim:
-            claimName: mariadb-pvc
-        - name: mariadb-volume
-          configMap:
-            name: mariadb-config
+  volumeClaimTemplates:
+    - metadata:
+        name: mariadb-persistent-storage
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 10Gi
