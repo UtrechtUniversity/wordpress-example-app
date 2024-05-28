@@ -92,12 +92,7 @@ spec:
           volumeMounts:
             - name: wordpress-persistent-storage
               mountPath: /bitnami/wordpress
-            - name: wordpress-volume
-              mountPath: /etc/config
       volumes:
         - name: wordpress-persistent-storage
           persistentVolumeClaim:
             claimName: wordpress-pvc
-        - name: wordpress-volume
-          configMap:
-            name: wordpress-config

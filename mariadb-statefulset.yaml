@@ -49,12 +49,6 @@ spec:
           volumeMounts:
             - name: mariadb-persistent-storage
               mountPath: /bitnami/mariadb
-            # - name: mariadb-volume
-            #   mountPath: /etc/config
-      # volumes:
-      #   - name: mariadb-volume
-      #     configMap:
-      #       name: mariadb-config
   volumeClaimTemplates:
     - metadata:
         name: mariadb-persistent-storage
