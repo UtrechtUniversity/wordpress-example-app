@@ -5,7 +5,7 @@ metadata:
   name: wp-example
   namespace: <your-namespace>
   annotations:
-    cert-manager.io/cluster-issuer: sectigo
+    cert-manager.io/cluster-issuer: letsencrypt # or sectigo
 spec:
   ingressClassName: openshift-default
   tls:
